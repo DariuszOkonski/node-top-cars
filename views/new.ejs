@@ -1,0 +1,47 @@
+<%- include('partials/header.ejs') %>
+
+<div id="new" class="container mt-4">
+  <h2 class="display-4">Add New Car</h2>
+
+  <form action="/cars" method="POST">
+    <div class="form-group">
+      <label for="brand">Brand</label>
+      <input name="car[brand]" type="text" class="form-control" id="brand" required>
+    </div>
+
+    <div class="form-group">
+      <label for="make">Make</label>
+      <input name="car[make]" type="text" class="form-control" id="make" required>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input name="car[price]" type="number" class="form-control" id="price" required>
+    </div>
+
+    <div class="form-group">
+      <label for="year">Year Of Production</label>
+      <input name="car[year]" type="number" class="form-control" id="year" required>
+    </div>
+
+    <div class="form-group">
+      <label for="horsepower">Horsepower</label>
+      <input name="car[horsepower]" type="number" class="form-control" id="horsepower" required> </div>
+
+    <div class="form-group">
+      <label for="maxspeed">Max Speed</label>
+      <input name="car[maxspeed]" type="number" class="form-control" id="maxspeed" required>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea name="car[description]" cols="20" rows="10" class="form-control" id="description" required></textarea>
+    </div>
+
+
+    <a class="btn btn-primary btn-sm"  href="/cars">Back</a>
+    <button type="submit" class="btn btn-success btn-sm">Add New Car</button>
+  </form>
+</div>
+
+<%- include('partials/footer.ejs') %>

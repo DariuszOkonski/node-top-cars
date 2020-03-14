@@ -3,6 +3,7 @@ const app = express();
 
 const indexRoutes = require('./routes/index');
 
+app.set('view engine', 'ejs');
 
 app.use(indexRoutes);
 

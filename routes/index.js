@@ -54,7 +54,7 @@ router.put('/cars/:id', (req, res) => {
     if (err) {
       res.redirect('/');
     } else {
-      res.redirect('/cars');
+      res.redirect('/cars/' + req.params.id);
     }
   });
 })
@@ -81,6 +81,19 @@ router.delete('/cars/:id', (req, res) => {
     }
   })
 });
+
+// show designated car
+router.get('/cars/:id', (req, res) => {
+  Car.findById(req.params.id, (err, foundCar) => {
+    if (err) {
+      res.redirect('/');
+    } else {
+      res.render('show', {
+        car: foundCar
+      })
+    }
+  });
+})
 
 
 module.exports = router;

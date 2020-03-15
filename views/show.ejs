@@ -3,7 +3,7 @@
 <div class="container mt-2">
   <h2 class="display-4">Show Car</h2>
 
-  <div class="card">
+  <div class="card mb-4">
     <img src="<%= car.picture %>" class="card-img-top" alt="...">
     <div id="show-car" class="card-body">
       <h5 class="card-title">Price: £<%= car.price %></h5>
@@ -25,13 +25,17 @@
 
   <% car.comments.forEach(comment => { %>
 
-  <div class="card mt-2">
-    <h5 class="card-header text-right">
-      <strong><%= comment.author %></strong> -
-      <%= comment.created.toLocaleTimeString() %> / <%= comment.created.toLocaleDateString() %>
-    </h5>
+  <div id="show-comment" class="card mt-2">
     <div class="card-body">
       <p class="card-text"><%= comment.body %></p>
+    </div>
+
+    <div class="card-body">
+      <p class="card-text">
+        <strong><%= comment.author %></strong>
+        -
+        <%= comment.created.toLocaleTimeString() %> / <%= comment.created.toLocaleDateString() %>
+      </p>
     </div>
   </div>
 

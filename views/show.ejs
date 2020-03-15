@@ -1,0 +1,29 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container mt-2">
+  <h2 class="display-4">Show Car</h2>
+
+  <div class="card">
+    <img src="<%= car.picture %>" class="card-img-top" alt="...">
+    <div id="show-car" class="card-body">
+      <h5 class="card-title">Price: £<%= car.price %></h5>
+      <h3 class="card-title text-primary"><%= car.brand.toUpperCase() %> <%= car.make.toUpperCase() %></h3>
+      <p class="card-text">Year: <strong><%= car.year %></strong></p>
+      <p class="card-text">HorsePower: <strong><%= car.horsepower %> KM</strong></p>
+      <p class="card-text">Max-Speed: <strong><%= car.maxspeed %> Km/h</strong></p>
+      <hr>
+      <p class="card-text">
+        <%= car.description %>
+      </p>
+      <hr>
+      <a href="/cars" class="btn btn-primary bt-sm">Back</a>
+      <a href="/cars/<%= car._id %>/edit" class="btn btn-success bt-sm">Edit</a>
+      <a href="/cars/<%= car._id %>/delete" class="btn btn-danger bt-sm">Delete</a>
+      <a href="/cars" class="btn btn-info bt-sm">Add Comment</a>
+    </div>
+  </div>
+
+
+</div>
+
+<%- include('partials/footer.ejs') %>

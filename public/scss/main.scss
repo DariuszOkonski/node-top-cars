@@ -47,3 +47,12 @@
     text-align: center;
   }
 }
+
+#show-comment {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @media(min-width: 1100px) {
+    grid-template-columns: 2fr 1fr;
+  }
+}

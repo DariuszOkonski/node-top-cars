@@ -40,7 +40,7 @@ router.post('/cars', (req, res) => {
 router.get('/cars/:id/edit', (req, res) => {
   Car.findById(req.params.id, (err, foundCar) => {
     if (err) {
-      res.redirect('/cars')
+      res.redirect('/')
     } else {
       res.render('edit', {
         car: foundCar
@@ -58,6 +58,29 @@ router.put('/cars/:id', (req, res) => {
     }
   });
 })
+
+// delete designated car
+router.get('/cars/:id/delete', (req, res) => {
+  Car.findById(req.params.id, (err, foundCar) => {
+    if (err) {
+      res.redirect('/');
+    } else {
+      res.render('delete', {
+        car: foundCar
+      })
+    }
+  })
+});
+
+router.delete('/cars/:id', (req, res) => {
+  Car.findByIdAndRemove(req.params.id, (err, removedCar) => {
+    if (err) {
+      res.redirect('/');
+    } else {
+      res.redirect('/cars');
+    }
+  })
+});
 
 
 module.exports = router;

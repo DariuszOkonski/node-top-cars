@@ -30,10 +30,20 @@
 }
 
 .card {
-  img {
+  .img-show {
     width: 100%;
     height: 240px;
     object-fit: cover;
     object-position: center;
+  }
+}
+
+#show-car {
+  h5.card-title {
+    text-align: right;
+  }
+
+  h3.card-title {
+    text-align: center;
   }
 }

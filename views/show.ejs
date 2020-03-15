@@ -19,28 +19,25 @@
       <a href="/cars" class="btn btn-primary bt-sm">Back</a>
       <a href="/cars/<%= car._id %>/edit" class="btn btn-success bt-sm">Edit</a>
       <a href="/cars/<%= car._id %>/delete" class="btn btn-danger bt-sm">Delete</a>
-      <a href="/cars" class="btn btn-info bt-sm">Add Comment</a>
+      <a href="/cars/<%= car._id %>/comments/new" class="btn btn-info bt-sm">Add Comment</a>
     </div>
   </div>
 
+  <% car.comments.forEach(comment => { %>
+
   <div class="card mt-2">
-    <h5 class="card-header text-right"><strong>Homer</strong> - 23.01.2020</h5>
+    <h5 class="card-header text-right">
+      <strong><%= comment.author %></strong> -
+      <%= comment.created.toLocaleTimeString() %> / <%= comment.created.toLocaleDateString() %>
+    </h5>
     <div class="card-body">
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text"><%= comment.body %></p>
     </div>
   </div>
-  <div class="card mt-2">
-    <h5 class="card-header text-right"><strong>Homer</strong> - 23.01.2020</h5>
-    <div class="card-body">
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    </div>
-  </div>
-  <div class="card mt-2">
-    <h5 class="card-header text-right"><strong>Homer</strong> - 23.01.2020</h5>
-    <div class="card-body">
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    </div>
-  </div>
+
+  <% }) %>
+
+
 
 
 </div>

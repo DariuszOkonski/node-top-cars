@@ -84,7 +84,7 @@ router.delete('/cars/:id', (req, res) => {
 
 // show designated car
 router.get('/cars/:id', (req, res) => {
-  Car.findById(req.params.id).populate('comments').exec((err, foundCar) => {
+  Car.findById(req.params.id, (err, foundCar) => {
     if (err) {
       res.redirect('/');
     } else {
@@ -92,7 +92,7 @@ router.get('/cars/:id', (req, res) => {
         car: foundCar
       });
     }
-  })
+  });
 })
 
 

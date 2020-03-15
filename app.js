@@ -2,12 +2,14 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 
 const indexRoutes = require('./routes/index');
 
 mongoose.connect('mongodb://localhost/cars_app', {
   useUnifiedTopology: true,
   useNewUrlParser: true,
+  useFindAndModify: false
 });
 
 app.set('view engine', 'ejs');
@@ -15,6 +17,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+app.use(methodOverride("_method"));
 
 app.use(indexRoutes);
 

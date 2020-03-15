@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 
 const indexRoutes = require('./routes/index');
+const commentsRoutes = require('./routes/comment');
 
 mongoose.connect('mongodb://localhost/cars_app', {
   useUnifiedTopology: true,
@@ -20,6 +21,7 @@ app.use(bodyParser.urlencoded({
 app.use(methodOverride("_method"));
 
 app.use(indexRoutes);
+app.use(commentsRoutes);
 
 // listener ===========================================
 const port = process.env.PORT || 3000;

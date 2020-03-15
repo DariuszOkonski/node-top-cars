@@ -17,7 +17,7 @@ router.get('/cars', (req, res) => {
         cars
       });
     }
-  })
+  });
 })
 
 // add new car
@@ -84,15 +84,15 @@ router.delete('/cars/:id', (req, res) => {
 
 // show designated car
 router.get('/cars/:id', (req, res) => {
-  Car.findById(req.params.id, (err, foundCar) => {
+  Car.findById(req.params.id).populate('comments').exec((err, foundCar) => {
     if (err) {
       res.redirect('/');
     } else {
       res.render('show', {
         car: foundCar
-      })
+      });
     }
-  });
+  })
 })
 
 

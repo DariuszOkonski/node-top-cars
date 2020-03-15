@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Comment = require('./comment');
 
 const CarSchema = new mongoose.Schema({
   brand: String,
@@ -12,6 +13,10 @@ const CarSchema = new mongoose.Schema({
   horsepower: String,
   maxspeed: String,
   description: String,
+  comments: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Comment'
+  }]
 });
 
 module.exports = mongoose.model('Car', CarSchema);

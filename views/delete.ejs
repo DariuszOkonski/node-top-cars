@@ -15,7 +15,10 @@
           <h6 class="card-title"><%= car.make.toUpperCase() %></h6>
           <p class=" card-text"><%= car.description %></p>
           <p class="card-text"><small class="text-muted">Changes are unreversable</small></p>
-          <a href="/cars" class="btn btn-primary btn-sm">Back</a>
+
+          <a class="btn btn-primary btn-sm"  href="/cars/">Show All</a>
+          <a class="btn btn-primary btn-sm"  href="/cars/<%= car._id %>">Show One</a>
+
           <form style="display: inline;" action="/cars/<%= car._id %>?_method=DELETE" method="POST">
             <button class="btn btn-danger btn-sm">Delete</button>
           </form>

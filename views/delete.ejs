@@ -1,0 +1,28 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container mt-2">
+  <h2 class="display-4">Delete Car</h2>
+
+  <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="<%= car.picture %>" class="card-img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h4 class="card-title">Are you sure to delete this car?</h4>
+          <h6 class="card-title"><%= car.brand.toUpperCase() %></h6>
+          <h6 class="card-title"><%= car.make.toUpperCase() %></h6>
+          <p class=" card-text"><%= car.description %></p>
+          <p class="card-text"><small class="text-muted">Changes are unreversable</small></p>
+          <a href="/cars" class="btn btn-primary btn-sm">Back</a>
+          <form style="display: inline;" action="/cars/<%= car._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-danger btn-sm">Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer.ejs') %>

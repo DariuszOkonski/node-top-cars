@@ -16,11 +16,11 @@
     <% cars.forEach(car => { %>
 
     <div class="card">
-      <img src="<%= car.picture %>" class="card-img-top" alt="...">
+      <img src="<%= car.picture %>" class="card-img-top img-show" alt="...">
       <div class="card-body">
         <h5 class="card-title"><%= car.brand.toUpperCase() %> - <%= car.make.toUpperCase() %></h5>
         <p class="card-text"><%= car.description.substring(0, 40) %>...</p>
-        <a href="#" class="btn btn-primary btn-sm">See More</a>
+        <a href="/cars/<%= car._id %>" class="btn btn-primary btn-sm">See More</a>
         <a href="/cars/<%= car._id %>/edit" class="btn btn-success btn-sm">Edit</a>
         <a href="/cars/<%= car._id %>/delete" class="btn btn-danger btn-sm">Delete</a>
       </div>

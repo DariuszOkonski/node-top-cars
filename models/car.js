@@ -1,5 +1,16 @@
 const mongoose = require('mongoose');
-const Comment = require('./comment');
+
+const CommentSchema = new mongoose.Schema({
+  author: String,
+  body: String,
+  created: {
+    type: Date,
+    default: Date.now
+  }
+})
+
+const Comment = mongoose.model('Comment', CommentSchema);
+
 
 const CarSchema = new mongoose.Schema({
   brand: String,
@@ -13,10 +24,7 @@ const CarSchema = new mongoose.Schema({
   horsepower: String,
   maxspeed: String,
   description: String,
-  comments: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Comment'
-  }]
+  comments: [CommentSchema]
 });
 
 module.exports = mongoose.model('Car', CarSchema);

@@ -40,10 +40,16 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(methodOverride("_method"));
 
+app.use(function (req, res, next) {
+  res.locals.currentUser = req.user;
+  next();
+});
+
 // Usege of partials routes
 app.use(indexRoutes);
 app.use(commentsRoutes);
 app.use(authorizationRoutes);
+
 
 // listener ===========================================
 const port = process.env.PORT || 3000;

@@ -6,6 +6,7 @@ const methodOverride = require('method-override');
 
 const indexRoutes = require('./routes/index');
 const commentsRoutes = require('./routes/comment');
+const authorizationRoutes = require('./routes/authorization');
 
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
@@ -41,6 +42,7 @@ app.use(methodOverride("_method"));
 // Usege of partials routes
 app.use(indexRoutes);
 app.use(commentsRoutes);
+app.use(authorizationRoutes);
 
 // listener ===========================================
 const port = process.env.PORT || 3000;

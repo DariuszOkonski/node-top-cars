@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Car = require('../models/car');
 // const Comment = require('../models/comment');
-const isLoggedIn = require('../middleware/middleware');
+const isLoggedIn = require('../middleware/isloggedin');
 
 router.get('/cars/:id/comments/new', isLoggedIn, (req, res) => {
   res.render('comments/new', {

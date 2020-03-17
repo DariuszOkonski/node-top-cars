@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Car = require('../models/car');
-const isLoggedIn = require('../middleware/middleware');
+const isLoggedIn = require('../middleware/isloggedin');
 
 // home page
 router.get('/', (req, res) => {

@@ -24,27 +24,6 @@ router.put('/cars/:id/comments', (req, res) => {
       })
     }
   })
-
-  // Car.findById(req.params.id, (err, car) => {
-  //   if (err) {
-  //     res.redirect('/');
-  //   } else {
-  //     Comment.create(req.body.comment, (err, comment) => {
-  //       if (err) {
-  //         res.redirect('/');
-  //       } else {
-  //         car.comments.push(comment);
-  //         car.save((err, data) => {
-  //           if (err) {
-  //             res.redirect('/');
-  //           } else {
-  //             res.redirect('/cars/' + req.params.id);
-  //           }
-  //         })
-  //       }
-  //     })
-  //   }
-  // })
 });
 
 module.exports = router;

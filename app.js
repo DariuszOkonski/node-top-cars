@@ -7,6 +7,10 @@ const methodOverride = require('method-override');
 const indexRoutes = require('./routes/index');
 const commentsRoutes = require('./routes/comment');
 
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const passportLocalMongoose = require('passport-local-mongoose');
+
 mongoose.connect('mongodb://localhost/cars_app', {
   useUnifiedTopology: true,
   useNewUrlParser: true,

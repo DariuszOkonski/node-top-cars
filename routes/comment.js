@@ -27,4 +27,9 @@ router.put('/cars/:id/comments', isLoggedIn, (req, res) => {
   })
 });
 
+// router.use(function (req, res, next) {
+//   res.locals.currentUser = req.user;
+//   next();
+// });
+
 module.exports = router;

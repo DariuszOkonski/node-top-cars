@@ -22,6 +22,16 @@ router.post('/register', (req, res) => {
       res.redirect('/cars');
     });
   });
+});
+
+// show log in form 
+router.get('/login', (req, res) => {
+  res.render('login');
 })
+
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/cars',
+  failureRedirect: '/login',
+}), (req, res) => {})
 
 module.exports = router;

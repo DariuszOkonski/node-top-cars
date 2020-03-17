@@ -10,6 +10,8 @@ const commentsRoutes = require('./routes/comment');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const passportLocalMongoose = require('passport-local-mongoose');
+const expressSession = require('express-session');
+const User = require('./models/user');
 
 mongoose.connect('mongodb://localhost/cars_app', {
   useUnifiedTopology: true,
@@ -17,6 +19,18 @@ mongoose.connect('mongodb://localhost/cars_app', {
   useFindAndModify: false
 });
 
+// Passport Configuration
+app.use(expressSession({
+  secret: 'This is a secret sentence whitch prepare salt',
+  resave: false,
+  saveUninitialized: false,
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+// Other Configuration
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
@@ -24,6 +38,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(methodOverride("_method"));
 
+// Usege of partials routes
 app.use(indexRoutes);
 app.use(commentsRoutes);
 

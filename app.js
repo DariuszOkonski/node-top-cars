@@ -26,6 +26,7 @@ app.use(expressSession({
   resave: false,
   saveUninitialized: false,
 }));
+passport.use(new LocalStrategy(User.authenticate()));
 app.use(passport.initialize());
 app.use(passport.session());
 passport.serializeUser(User.serializeUser());

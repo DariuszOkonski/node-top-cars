@@ -10,7 +10,6 @@ const authorizationRoutes = require('./routes/authorization');
 
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-const passportLocalMongoose = require('passport-local-mongoose');
 const expressSession = require('express-session');
 const User = require('./models/user');
 

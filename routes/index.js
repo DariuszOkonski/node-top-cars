@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Car = require('../models/car');
+const isLoggedIn = require('../middleware/middleware');
 
 // home page
 router.get('/', (req, res) => {
@@ -8,7 +9,7 @@ router.get('/', (req, res) => {
 });
 
 // show all cars
-router.get('/cars', (req, res) => {
+router.get('/cars', isLoggedIn, (req, res) => {
   Car.find({}, (err, cars) => {
     if (err) {
       res.redirect('/');
@@ -21,11 +22,11 @@ router.get('/cars', (req, res) => {
 })
 
 // add new car
-router.get('/cars/new', (req, res) => {
+router.get('/cars/new', isLoggedIn, (req, res) => {
   res.render('new');
 })
 
-router.post('/cars', (req, res) => {
+router.post('/cars', isLoggedIn, (req, res) => {
 
   Car.create(req.body.car, (err, car) => {
     if (err) {
@@ -37,7 +38,7 @@ router.post('/cars', (req, res) => {
 });
 
 // edit designated car
-router.get('/cars/:id/edit', (req, res) => {
+router.get('/cars/:id/edit', isLoggedIn, (req, res) => {
   Car.findById(req.params.id, (err, foundCar) => {
     if (err) {
       res.redirect('/')
@@ -49,7 +50,7 @@ router.get('/cars/:id/edit', (req, res) => {
   })
 })
 
-router.put('/cars/:id', (req, res) => {
+router.put('/cars/:id', isLoggedIn, (req, res) => {
   Car.findByIdAndUpdate(req.params.id, req.body.car, (err, updatedCar) => {
     if (err) {
       res.redirect('/');
@@ -60,7 +61,7 @@ router.put('/cars/:id', (req, res) => {
 })
 
 // delete designated car
-router.get('/cars/:id/delete', (req, res) => {
+router.get('/cars/:id/delete', isLoggedIn, (req, res) => {
   Car.findById(req.params.id, (err, foundCar) => {
     if (err) {
       res.redirect('/');
@@ -72,7 +73,7 @@ router.get('/cars/:id/delete', (req, res) => {
   })
 });
 
-router.delete('/cars/:id', (req, res) => {
+router.delete('/cars/:id', isLoggedIn, (req, res) => {
   Car.findByIdAndRemove(req.params.id, (err, removedCar) => {
     if (err) {
       res.redirect('/');
@@ -83,7 +84,7 @@ router.delete('/cars/:id', (req, res) => {
 });
 
 // show designated car
-router.get('/cars/:id', (req, res) => {
+router.get('/cars/:id', isLoggedIn, (req, res) => {
   Car.findById(req.params.id, (err, foundCar) => {
     if (err) {
       res.redirect('/');
